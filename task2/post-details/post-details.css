@@ -1,0 +1,17 @@
+.postBlock{
+    background-color: #98f587;
+    width: 550px;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.commentContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.comment{
+    background-color: rgba(162, 246, 150, 0.7);
+    padding-left: 10px;
+}
