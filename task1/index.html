@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrapper">
+    <h1>Test</h1>
+    <form>
+    <label> Name/Value Pair
+        <input type="text" placeholder="Name=Value" name="keys">
+    </label>
+        <button id="add">Add</button>
+    </form>
+    <p id="error">Invalid data</p>
+    <div class="container">
+        <div class="getInfo">
+            <p>Name/Value Pair List</p>
+            <div class="infoBlock"></div>
+        </div>
+        <div class="buttonBlock">
+            <button id="sortByName">Sort by Name</button>
+            <button id="sortByValue">Sort by Value</button>
+            <button id="delete">Delete</button>
+        </div>
+    </div>
+
+</div>
+<script src="main.js"></script>
+</body>
+</html>
