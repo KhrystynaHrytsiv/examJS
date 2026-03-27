@@ -1,0 +1,34 @@
+@media screen and (max-width: 480px){
+    .wrapper{
+        font-size: 16px;
+        padding: 20px;
+    }
+    .wrapper form{
+        gap: 50px;
+    }
+    form label input{
+        height: 30px;
+        font-size: 16px;
+    }
+    button{
+        font-size: 16px;
+        height: 30px;
+    }
+    .container{
+       display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .getInfo{
+        width: 100%;
+    }
+    .buttonBlock{
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+    .buttonBlock button{
+        width: 60%;
+
+    }
+}

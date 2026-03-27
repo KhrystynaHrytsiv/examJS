@@ -1,0 +1,28 @@
+@media  screen and (min-width: 481px) and (max-width: 768px){
+    .wrapper{
+        padding: 30px;
+    }
+    .wrapper form{
+        gap: 50px;
+    }
+    .container{
+        gap: 50px;
+    }
+    button{
+        padding: 0 10px;
+    }
+}
+
+
+
+@media  screen and (min-width: 769px) and (max-width: 1279px){
+  .wrapper form{
+      gap: 120px;
+  }
+    .container{
+        gap: 120px;
+    }
+    button{
+        padding: 0 10px;
+    }
+}
