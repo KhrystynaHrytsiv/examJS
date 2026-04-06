@@ -26,7 +26,12 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
     })
 
 fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments `)
-          .then(response => response.json())
+    .then(response =>{
+        if (!response.ok){
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json()
+    })
           .then(comments =>{
               for (const comment of comments) {
                   let commentDiv = document.createElement('div');

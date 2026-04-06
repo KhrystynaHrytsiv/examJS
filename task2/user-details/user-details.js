@@ -1,6 +1,7 @@
 const id = new URLSearchParams(window.location.search).get('id');
 let userBlock = document.getElementsByClassName('userBlock')[0];
 fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(response => response.json())
           .then(response =>{
               if (!response.ok){
                   throw new Error(`HTTP error! status: ${response.status}`);
@@ -33,7 +34,12 @@ let button = document.getElementsByTagName('button')[0];
 let postContainer = document.getElementsByClassName('postContainer')[0];
 button.onclick = function (){
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
-        .then(response => response.json())
+        .then(response =>{
+            if (!response.ok){
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json()
+        })
         .then(posts =>{
             for (let post of posts){
                 let postDiv = document.createElement('div');

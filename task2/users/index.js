@@ -1,6 +1,11 @@
 let container = document.getElementsByClassName('container')[0];
 fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())
+    .then(response =>{
+        if (!response.ok){
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json()
+    })
     .then(users => {
         for (const user of users) {
             let {id, name } = user;
