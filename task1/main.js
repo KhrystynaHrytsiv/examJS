@@ -28,12 +28,20 @@ function show (){
 
 let sortByNameButton = document.getElementById('sortByName');
 sortByNameButton.onclick = function (){
-    array.sort((a, b) => a.name - b.name);
+    array.sort((a, b) =>{
+        if(a.name < b.name) return -1;
+        if (b.name < a.name) return 1;
+        return 0;
+    });
     show()
 };
 let sortByValueButton = document.getElementById('sortByValue');
 sortByValueButton.onclick = function (){
-    array.sort((a, b) => a.value - b.value);
+    array.sort((a, b) =>{
+        if(a.value < b.value) return -1;
+        if (b.value < a.value) return 1;
+        return 0;
+    });
     show()
 };
 

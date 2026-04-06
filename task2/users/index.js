@@ -1,7 +1,7 @@
+let container = document.getElementsByClassName('container')[0];
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => {
-        let container = document.getElementsByClassName('container')[0];
         for (const user of users) {
             let {id, name } = user;
             let userBLock = document.createElement('div');
@@ -14,4 +14,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
             userBLock.append(h3, a);
             container.appendChild(userBLock);
         }
-    })
+    })   .catch(reason =>{
+    console.log(reason);
+    container.innerHTML = 'Error of loading data'
+})

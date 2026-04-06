@@ -5,11 +5,14 @@
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 50px;
+    text-align: center;
 }
 .commentContainer{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    text-align: center;
+    font-size: 18px;
 }
 .comment{
     background-color: rgba(162, 246, 150, 0.7);

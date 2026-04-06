@@ -4,11 +4,15 @@ postBlock.classList.add('postBlock');
 
 let commentContainer = document.createElement('div');
 commentContainer.classList.add('commentContainer');
-
 document.body.append(postBlock, commentContainer);
 
 fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-          .then(response => response.json())
+          .then(response =>{
+              if (!response.ok){
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json();
+          })
           .then(post =>{
               for (const key in post) {
                   let div = document.createElement('div');
@@ -16,8 +20,12 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
                   postBlock.appendChild(div)
               }
           })
+    .catch(reason =>{
+        console.log(reason);
+        postBlock.innerHTML = 'Error of loading data';
+    })
 
-fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments `)
           .then(response => response.json())
           .then(comments =>{
               for (const comment of comments) {
@@ -31,3 +39,7 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
                   commentContainer.appendChild(commentDiv);
               }
           })
+    .catch(reason =>{
+        console.log(reason);
+        commentContainer.innerHTML = 'Error of loading data'
+    })

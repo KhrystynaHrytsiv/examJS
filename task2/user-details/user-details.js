@@ -1,8 +1,17 @@
 const id = new URLSearchParams(window.location.search).get('id');
 let userBlock = document.getElementsByClassName('userBlock')[0];
 fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-          .then(response => response.json())
+          .then(response =>{
+              if (!response.ok){
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.json()
+          })
           .then(user => openArrays(user, userBlock))
+    .catch(reason => {
+        console.log(reason);
+        userBlock.innerHTML = 'Error of loading data'
+    })
 
 function openArrays(user, userBlock){
     for (const key in user) {
@@ -21,11 +30,11 @@ function openArrays(user, userBlock){
     }
 }
 let button = document.getElementsByTagName('button')[0];
+let postContainer = document.getElementsByClassName('postContainer')[0];
 button.onclick = function (){
     fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
         .then(response => response.json())
         .then(posts =>{
-            let postContainer = document.getElementsByClassName('postContainer')[0];
             for (let post of posts){
                 let postDiv = document.createElement('div');
                 postDiv.classList.add('post');
@@ -38,4 +47,9 @@ button.onclick = function (){
                 postContainer.appendChild(postDiv);
             }
         })
+        .catch(error => {
+            console.error(error);
+            postContainer.innerHTML = 'Error loading posts';
+        });
+    button.disabled = true;
 }
