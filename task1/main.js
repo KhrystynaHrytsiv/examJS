@@ -5,19 +5,13 @@ let inputField = form.keys;
 let error = document.getElementById('error');
 
 inputField.addEventListener('input', function () {
-    let value = inputField.value.trim();
-    if (value === '') {
-        error.style.display = 'none';
-        return;
-    }
-    let match = value.match(/^([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)$/);
+    let match = inputField.value.match(/^([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)$/);
     error.style.display = match ? 'none' : 'block';
 });
+
 form.onsubmit = function (ev){
     ev.preventDefault();
-    let input = inputField.value;
-    let match = input.match(/^([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)$/);
-    let error = document.getElementById('error');
+    let match = inputField.value.match(/^([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)$/);
     if (match){
         let name = match[1];
         let value = match[2];
