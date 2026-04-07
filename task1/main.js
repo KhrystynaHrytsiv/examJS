@@ -12,17 +12,22 @@ form.onsubmit = function (ev){
         array.push({name, value});
         error.style.display = 'none';
         show()
+        form.reset()
     }else {
         error.style.display = 'block';
     }
-    form.reset()
 }
 function show (){
     infoBlock.innerHTML = '';
-    array.forEach(item =>{
+    array.forEach((item, index) =>{
         let div = document.createElement('div');
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.dataset.index = index.toString();
         div.innerText = `${item.name} = ${item.value}`;
+        div.appendChild(checkbox)
         infoBlock.appendChild(div);
+
     })
 }
 
@@ -45,8 +50,8 @@ sortByValueButton.onclick = function (){
     show()
 };
 
-let deleteButton = document.getElementById('delete');
-deleteButton.onclick = function (){
-    infoBlock.innerText = ''
-    array = [];
+document.getElementById('delete').onclick = function () {
+    let checkboxes = infoBlock.querySelectorAll('input[type="checkbox"]');
+    array = array.filter((_, index) => !checkboxes[index].checked);
+    show();
 };

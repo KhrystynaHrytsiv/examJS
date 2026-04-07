@@ -1,14 +1,13 @@
 const id = new URLSearchParams(window.location.search).get('id');
 let userBlock = document.getElementsByClassName('userBlock')[0];
 fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-    .then(response => response.json())
-          .then(response =>{
-              if (!response.ok){
-                  throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.json()
-          })
-          .then(user => openArrays(user, userBlock))
+    .then(response =>{
+        if (!response.ok){
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json()
+    })
+    .then(user => openArrays(user, userBlock))
     .catch(reason => {
         console.log(reason);
         userBlock.innerHTML = 'Error of loading data'
@@ -44,12 +43,12 @@ button.onclick = function (){
             for (let post of posts){
                 let postDiv = document.createElement('div');
                 postDiv.classList.add('post');
-                let title = document.createElement('p');
-                title.innerText = post.title;
+                let p = document.createElement('p');
+                p.innerText = post.title;
                 let a = document.createElement('a');
                 a.href = `../post-details/post-details.html?id=${post.id}`;
                 a.innerText  = 'details'
-                postDiv.append(title, a);
+                postDiv.append(p, a);
                 postContainer.appendChild(postDiv);
             }
         })
